@@ -1,0 +1,24 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: authorization_server
+  cloud:
+    client:
+      ipAddress: 127.0.0.1
+  datasource:
+    url: jdbc:mysql:///test01
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+eureka:
+  instance:
+    prefer-ip-address: false
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    hostname: ${spring.cloud.client.ipAddress}
+  client:
+    serviceUrl:
+      #eurekaServers
+      defaultZone: http://127.0.0.1:8086/eureka
+mybatis:
+  type-aliases-package: lee.model
